@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.21)
 
 # Set the project name and version
-project(Template VERSION 1.0.0)
+project(IconPainter VERSION 1.0.0)
 
 # C++ standard settings
 set(CMAKE_CXX_STANDARD 20)
@@ -11,17 +11,23 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64")
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
+# Gather all source files recursively
+file(GLOB_RECURSE SOURCES src/*.cpp)
+
 # Add the mod binary
-add_library(${PROJECT_NAME} SHARED
-    src/main.cpp
-    # Add any extra C++ source files here
-)
+add_library(${PROJECT_NAME} SHARED ${SOURCES})
 
 # Find Geode SDK
 if (NOT DEFINED ENV{GEODE_SDK})
     message(FATAL_ERROR "Unable to find Geode SDK! Please define the GEODE_SDK environment variable to point to the Geode SDK location.")
 else()
     message(STATUS "Found Geode SDK at: $ENV{GEODE_SDK}")
+endif()
+
+# Check if building on GitHub Actions
+if (DEFINED ENV{GITHUB_ACTIONS})
+    message("GitHub Actions Build")
+    add_definitions(-DGITHUB_ACTIONS)
 endif()
 
 # Add the Geode SDK as a subdirectory
