@@ -1,14 +1,14 @@
 {
-	"geode": "$GEODE_VERSION",
+	"geode": "v3.4.0",
 	"gd": {
 		"win": "2.206",
 		"android": "2.206",
 		"mac": "2.206",
 		"ios": "2.206"
 	},
-	"id": "$MOD_ID",
-	"name": "$MOD_NAME",
-	"version": "$MOD_VERSION",
-	"developer": "$MOD_DEVELOPER",
-	"description": "$MOD_DESCRIPTION"
+	"id": "omgrod.iconpainter",
+	"name": "Icon Painter",
+	"version": "v1.0.0",
+	"developer": "OmgRod",
+	"description": "Paint yoour own icons to play with in-game!"
 }
